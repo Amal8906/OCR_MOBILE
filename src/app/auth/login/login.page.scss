@@ -1,0 +1,32 @@
+.login-content {
+    width: 100% !important;
+    height: 70vh;
+    display: table-cell;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.login-content-area {
+    color: #fff;
+}
+
+.login-content-area ion-item ion-icon {
+    margin-right: 7px;
+}
+
+.login-content-area ion-label {
+    color: #fff;
+    --color: #1aa3ff !important;
+}
+
+.login-content-area input {
+    color: #fff;
+}
+    
+
+
+.logo-section {
+    background: rgba(153, 153, 102,.3);
+    height: 150px;
+    border-bottom: 5px solid #1aa3ff;
+}
