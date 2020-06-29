@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar color="mango">
+      <ion-title>Registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="text-center "><img src="assets/img/classroom-logo.jpg" class="logo-section" alt="Open Class Room">
+    <h1>Registration</h1>
+  </div>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="formData">
+      <form [formGroup]="formData">
+        <ng-template matStepLabel>User details</ng-template>
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>First Name
+          </ion-label>
+          <ion-input type="text" formControlName="firstName">
+            <ion-icon name="person"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>Last Name
+          </ion-label>
+          <ion-input type="text" formControlName="lastName">
+            <ion-icon name="person"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>Mobile Number or Email Address
+          </ion-label>
+          <ion-input type="text" formControlName="mobileOrEmail">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>Password
+          </ion-label>
+          <ion-input type="text" formControlName="password">
+            <ion-icon name="key"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>Confirm Password
+          </ion-label>
+          <ion-input type="text" formControlName="confirmPassword">
+            <ion-icon name="key"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-label position="floating">
+            <ion-icon slot="start"></ion-icon>User category
+          </ion-label>
+          <ion-select placeholder="Select" formControlName="userCategory" interface="popover">
+            <ion-select-option *ngFor="let cat of userCategory" [value]="cat.id">{{cat.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox color="primary"></ion-checkbox>
+          <ion-label>Terms & conditions</ion-label>
+        </ion-item>
+
+        <ion-item no-padding>
+          <ion-button (click)="saveUser()" color="primary" size="small">Save & Next</ion-button>
+        </ion-item>
+      </form>
+      <ion-item>
+        <a [routerLink]="['/auth/login']">Click here if Already Registered</a>
+      </ion-item>
+    </mat-step>
+
+    <mat-step [stepControl]="personalDetail">
+      
+      <form [formGroup]="personalDetail">
+        <ng-template matStepLabel>Personal Information </ng-template>
+          <ion-radio-group value="gender">
+           
+            <ion-grid>
+              <ion-label>Gender</ion-label>
+              <ion-row>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Male</ion-label>
+                    <ion-radio slot="start" value="male"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Female</ion-label>
+                    <ion-radio slot="start" value="female"></ion-radio>
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item>
+                    <ion-label>Other</ion-label>
+                    <ion-radio slot="start" value="other"></ion-radio>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              </ion-grid>
+          </ion-radio-group>
+
+          <ion-item>
+            <ion-label position="floating">Date of Birth</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" formControlName="dob" value="2002-09-23T15:03:46.789">
+              <ion-icon name="person"></ion-icon>
+            </ion-datetime>
+          </ion-item>
+       
+          <ion-item no-padding>
+            <ion-label position="floating">
+              <ion-icon slot="start"></ion-icon>Institute
+            </ion-label>
+            <ion-select placeholder="Select" formControlName="instituteId" interface="popover">
+              <ion-select-option *ngFor="let cat of userCategory" [value]="cat.id">{{cat.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-label position="floating">
+              <ion-icon slot="start"></ion-icon>Course
+            </ion-label>
+            <ion-select placeholder="Select" formControlName="course" interface="popover">
+              <ion-select-option *ngFor="let cat of userCategory" [value]="cat.id">{{cat.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-label position="floating">
+              <ion-icon slot="start"></ion-icon>Qualification
+            </ion-label>
+            <ion-select placeholder="Select" formControlName="qualification" interface="popover">
+              <ion-select-option *ngFor="let cat of userCategory" [value]="cat.id">{{cat.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item no-padding>
+            <ion-label position="floating">
+              <ion-icon slot="start"></ion-icon>subjects
+            </ion-label>
+            <ion-select placeholder="Select" formControlName="subjects" interface="popover">
+              <ion-select-option *ngFor="let cat of userCategory" [value]="cat.id">{{cat.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+        <ion-item no-padding>
+          <ion-button (click)="syncMasterData()" color="primary" size="small">save & Next</ion-button>
+        </ion-item>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <ion-button matStepperPrevious color="medium" size="small">Back</ion-button>
+        <ion-button (click)="signupCompletion()" color="primary" size="small">Done</ion-button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+  
+</ion-content>
